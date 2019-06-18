@@ -8,12 +8,13 @@ import java.util.LinkedList;
 public class Grid {
 
     // these properties need to have a fixed value all along the program since we will create a grid with rows & columns, but these values will stay fixed.
+    public static final int ROWS = 15;
+    public static final int COLUMNS = 15;
     public static final int CELLSIZE = 40;
     public static final int PADDING = 10;
 
-    //grid properties
-    private int rows = 10;
-    private int columns = 10;
+    // grid width = cellsize * rows + padding
+    // grid height = cellsize * columns + padding
 
     private LinkedList<Cell> cellGrid = new LinkedList<>();
 
@@ -22,8 +23,8 @@ public class Grid {
     }
 
     public void init() {
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < rows; j++) {
+        for (int i = 0; i < COLUMNS; i++) {
+            for (int j = 0; j < ROWS; j++) {
                 if (j == 0 && i == 0) {
                     cellGrid.add(createGrid(PADDING, PADDING));
                     continue;
@@ -38,22 +39,27 @@ public class Grid {
         return cellGrid;
     }
 
-    public int getRows() {
-        return rows;
+    public static int getROWS() {
+        return ROWS;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
+    public static int getCOLUMNS() {
+        return COLUMNS;
     }
 
-    public int getColumns() {
-        return columns;
+    public static int getCELLSIZE() {
+        return CELLSIZE;
     }
 
-    public void setColumns(int columns) {
-        this.columns = columns;
+    public static int getPADDING() {
+        return PADDING;
     }
 
+    public LinkedList<Cell> getCellGrid() {
+        return cellGrid;
+    }
 
-
+    public void setCellGrid(LinkedList<Cell> cellGrid) {
+        this.cellGrid = cellGrid;
+    }
 }

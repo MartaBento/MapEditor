@@ -4,28 +4,25 @@ import org.academiadecodigo.mapeditor.grid.Cell;
 import org.academiadecodigo.mapeditor.grid.Cursor;
 import org.academiadecodigo.mapeditor.grid.CursorDirection;
 import org.academiadecodigo.mapeditor.grid.Grid;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 import java.io.Closeable;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
-/**
- * Created on 18/06/2019.
- */
+
 public class MapEditor {
 
     private Grid grid;
     private Cursor cursor;
     private boolean paitingCell;
     public LinkedList<Cell> cellGrid;
+    private Keyboard keyboard;
 
 
     public void init() {
@@ -187,6 +184,10 @@ public class MapEditor {
 
                 case KeyboardEvent.KEY_Z:
                     mapEditor.unfillCell();
+                    break;
+
+                case KeyboardEvent.KEY_S:
+                    mapEditor.save();
                     break;
 
             }
