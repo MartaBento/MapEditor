@@ -1,13 +1,12 @@
 package org.academiadecodigo.mapeditor.grid;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-public class Cursor extends Rectangle implements KeyboardHandler {
+public class Cursor extends Square implements KeyboardHandler {
 
     //properties
     private int x;
@@ -17,7 +16,17 @@ public class Cursor extends Rectangle implements KeyboardHandler {
 
     //constructor
     public Cursor(int x, int y) {
-        super(x, y, Grid.CELLSIZE, Grid.CELLSIZE);
+        super(x, y);
+        setupKeyboardListeners();
+    }
+
+    public void move(CursorDirection direction) {
+
+        switch (direction) {
+            case UP:
+                cursor.translate(1, 1);
+        }
+
     }
 
     // keyboard events for the cursor
@@ -62,30 +71,16 @@ public class Cursor extends Rectangle implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        if (keyboardEvent.getKey() == keyboardEvent.KEY_UP) {
-
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
+            cursor.move(CursorDirection.UP);
+            System.out.println("Tecla Up");
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN) {
+            System.out.println("Tecla Down");
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
+            System.out.println("Tecla Left");
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
+            System.out.println("Tecla Right");
         }
-
-
-
-
-        /*        if (!isDead()) {
-            if (keyboardEvent.getKey() == keyboardEvent.KEY_W) {
-                position.playerMoveDirection(GridDirection.UP, 25);
-                System.out.println(position.getX() + " , " + position.getY());
-            } else if (keyboardEvent.getKey() == keyboardEvent.KEY_S) {
-                position.playerMoveDirection(GridDirection.DOWN, 25);
-                System.out.println(position.getX() + " , " + position.getY());
-            } else if (keyboardEvent.getKey() == keyboardEvent.KEY_A) {
-                position.playerMoveDirection(GridDirection.LEFT, 25);
-                System.out.println(position.getX() + " , " + position.getY());
-            } else if (keyboardEvent.getKey() == keyboardEvent.KEY_D) {
-                position.playerMoveDirection(GridDirection.RIGHT, 25);
-                System.out.println(position.getX() + " , " + position.getY());
-            }
-            position.updatePos();
-        }*/
-
     }
 
     @Override
