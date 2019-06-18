@@ -10,8 +10,7 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 public class Main {
 
     public static void main(String[] args) {
-
-        Grid grid = new Grid(6,6);
-        Cursor cursor = new Cursor(10,10);
+        MapEditor mapEditor = new MapEditor();
+        mapEditor.init();
     }
 }

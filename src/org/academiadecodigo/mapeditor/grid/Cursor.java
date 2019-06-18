@@ -7,121 +7,79 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-public class Cursor extends Cell implements KeyboardHandler {
+public class Cursor {
 
-    //properties
-    private int x;
-    private int y;
-    private boolean filled;
-    private Cursor cursor;
-    private int rows;
-    private int columns;
-    private Grid grid;
-    private Cell cell;
+    private Cell cursor;
 
-    //constructor
-    public Cursor(int x, int y) {
-        super(x, y);
-        setupKeyboardListeners();
-        fill();
+    public Cursor (Cell cursor) {
+        this.cursor = cursor;
     }
 
-    public void moveInDirection(CursorDirection direction, int distance) {
+    public void init() {
+        cursor.setColor(Color.BLUE);
+        cursor.fill();
+    }
+
+    // validates our grid bounds and if the cursor can move on that specific direction when we use the keyboard
+    public boolean canMoveInDirection(CursorDirection direction) {
 
         switch (direction) {
 
             case UP:
-                moveUp(distance);
-                break;
+               if (y() <= Grid.PADDING) {
+                   return false;
+               }
+               return true;
 
             case DOWN:
-                moveDown(distance);
-                break;
+                if (y() >= (Grid.PADDING + Grid.CELLSIZE) - Grid.CELLSIZE) {
+                    return false;
+                }
+                return true;
 
             case LEFT:
-                moveLeft(distance);
-                break;
+                if (x() <= Grid.PADDING) {
+                    return false;
+                }
+                return true;
 
             case RIGHT:
-                moveRight(distance);
-                break;
+                if (x() >= (Grid.PADDING + Grid.CELLSIZE) - Grid.CELLSIZE) {
+                    return false;
+                }
+                return true;
+        }
+        return true;
+    }
+
+    // the cursor moves allowed on our grid
+
+    public void moveInDirection (CursorDirection direction) {
+
+        if (direction == CursorDirection.UP && canMoveInDirection(direction)) {
+            cursor.translate(Grid.CELLSIZE, 0);
+        }
+        if (direction == CursorDirection.DOWN && canMoveInDirection(direction)) {
+            cursor.translate(Grid.CELLSIZE, 0);
+        }
+
+        if (direction == CursorDirection.LEFT && canMoveInDirection(direction)) {
+            cursor.translate(Grid.CELLSIZE, 0);
+        }
+
+        if (direction == CursorDirection.RIGHT && canMoveInDirection(direction)) {
+            cursor.translate(Grid.CELLSIZE, 0);
         }
     }
 
-    public void moveUp(int distance) {
-        cursor.translate(Grid.CELLSIZE, - distance);
+    public int x() {
+        return cursor.getX();
     }
 
-    public void moveDown(int distance) {
-
+    public int y() {
+        return cursor.getY();
     }
 
-    public void moveLeft(int distance) {
-
-    }
-
-    public void moveRight(int distance) {
-
-    }
-
-    // keyboard events for the cursor
-
-    private void setupKeyboardListeners() {
-        Keyboard keyboard = new Keyboard(this);
-
-        KeyboardEvent eventUp = new KeyboardEvent();
-        eventUp.setKey(KeyboardEvent.KEY_UP);
-        eventUp.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventUp);
-
-        KeyboardEvent eventDown = new KeyboardEvent();
-        eventDown.setKey(KeyboardEvent.KEY_DOWN);
-        eventDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventDown);
-
-
-        KeyboardEvent eventLeft = new KeyboardEvent();
-        eventLeft.setKey(KeyboardEvent.KEY_LEFT);
-        eventLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventLeft);
-
-
-        KeyboardEvent eventRight = new KeyboardEvent();
-        eventRight.setKey(KeyboardEvent.KEY_RIGHT);
-        eventRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventRight);
-    }
-
-    @Override
-    public void draw() {
-        super.draw();
-        filled = false;
-    }
-
-    @Override
-    public void fill() {
-        super.fill();
-        cursor.setColor(Color.DARK_GRAY);
-        filled = true;
-    }
-
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
-            cursor.moveInDirection(CursorDirection.UP, Grid.CELLSIZE + Grid.PADDING);
-            System.out.println("Up");
-        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN) {
-            System.out.println("Down");
-        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
-            System.out.println("Left");
-        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
-            System.out.println("Right");
-        }
-    }
-// rectangle = new Rectangle(i * CELLSIZE + PADDING, j * CELLSIZE + PADDING, CELLSIZE, CELLSIZE); // x, y, width, height
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
-    }
 }
+
+
