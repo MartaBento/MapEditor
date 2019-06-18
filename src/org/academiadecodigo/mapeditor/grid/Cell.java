@@ -15,16 +15,15 @@ public class Cell extends Rectangle {
     }
 
     //these methods are inherited from the super
-
     @Override
     public void draw() {
         super.draw();
-        filled = false; // if the square is draw, it's not filled;
+        filled = false;
     }
 
     public void fill() {
         super.fill();
-        filled = true; // if the square is filled, then it's not drawn.
+        filled = true;
     }
 
 }

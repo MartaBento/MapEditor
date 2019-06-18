@@ -1,5 +1,7 @@
 package org.academiadecodigo.mapeditor.grid;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -21,44 +23,46 @@ public class Cursor extends Cell implements KeyboardHandler {
     public Cursor(int x, int y) {
         super(x, y);
         setupKeyboardListeners();
+        fill();
     }
 
-    public void move(CursorDirection direction) {
+    public void moveInDirection(CursorDirection direction, int distance) {
 
         switch (direction) {
-            case UP:
 
-        }
-
-    }
-
-    /*
-    public void playerMoveDirection(GridDirection direction, int distance) {
-
-        switch (direction) {
             case UP:
                 moveUp(distance);
                 break;
+
             case DOWN:
                 moveDown(distance);
                 break;
-            case RIGHT:
-                moveRight(distance);
-                break;
+
             case LEFT:
                 moveLeft(distance);
+                break;
+
+            case RIGHT:
+                moveRight(distance);
                 break;
         }
     }
 
-    public void moveUp(int dist) {
-        if (picture.getY() - dist >= 170) {
-            picture.translate(0, -dist);
-        } else {
-            moveDown(dist);
-        }
+    public void moveUp(int distance) {
+        cursor.translate(Grid.CELLSIZE, - distance);
     }
-     */
+
+    public void moveDown(int distance) {
+
+    }
+
+    public void moveLeft(int distance) {
+
+    }
+
+    public void moveRight(int distance) {
+
+    }
 
     // keyboard events for the cursor
 
@@ -97,12 +101,14 @@ public class Cursor extends Cell implements KeyboardHandler {
     @Override
     public void fill() {
         super.fill();
+        cursor.setColor(Color.DARK_GRAY);
         filled = true;
     }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
+            cursor.moveInDirection(CursorDirection.UP, Grid.CELLSIZE + Grid.PADDING);
             System.out.println("Up");
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN) {
             System.out.println("Down");
@@ -112,6 +118,7 @@ public class Cursor extends Cell implements KeyboardHandler {
             System.out.println("Right");
         }
     }
+// rectangle = new Rectangle(i * CELLSIZE + PADDING, j * CELLSIZE + PADDING, CELLSIZE, CELLSIZE); // x, y, width, height
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {

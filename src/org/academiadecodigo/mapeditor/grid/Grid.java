@@ -26,15 +26,12 @@ public class Grid {
     public void init() {
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < rows; j++) {
-                rectangle = new Rectangle(i * CELLSIZE + PADDING, j * CELLSIZE + PADDING, CELLSIZE, CELLSIZE);
+                rectangle = new Rectangle(i * CELLSIZE + PADDING, j * CELLSIZE + PADDING, CELLSIZE, CELLSIZE); // x, y, width, height
                 rectangle.draw();
-                rectangle.setColor(Color.DARK_GRAY);
-
-                cursor = new Cursor(CELLSIZE + PADDING, CELLSIZE + PADDING);
-                cursor.fill();
-                cursor.setColor(Color.BLUE);
+                rectangle.setColor(Color.LIGHT_GRAY);
             }
         }
+
     }
 
     public int getRows() {
@@ -52,5 +49,7 @@ public class Grid {
     public void setColumns(int columns) {
         this.columns = columns;
     }
+
+
 
 }
