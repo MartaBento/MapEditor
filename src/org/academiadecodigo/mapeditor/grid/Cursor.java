@@ -1,18 +1,21 @@
 package org.academiadecodigo.mapeditor.grid;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-public class Cursor extends Square implements KeyboardHandler {
+public class Cursor extends Cell implements KeyboardHandler {
 
     //properties
     private int x;
     private int y;
     private boolean filled;
     private Cursor cursor;
+    private int rows;
+    private int columns;
+    private Grid grid;
+    private Cell cell;
 
     //constructor
     public Cursor(int x, int y) {
@@ -24,10 +27,38 @@ public class Cursor extends Square implements KeyboardHandler {
 
         switch (direction) {
             case UP:
-                cursor.translate(1, 1);
+
         }
 
     }
+
+    /*
+    public void playerMoveDirection(GridDirection direction, int distance) {
+
+        switch (direction) {
+            case UP:
+                moveUp(distance);
+                break;
+            case DOWN:
+                moveDown(distance);
+                break;
+            case RIGHT:
+                moveRight(distance);
+                break;
+            case LEFT:
+                moveLeft(distance);
+                break;
+        }
+    }
+
+    public void moveUp(int dist) {
+        if (picture.getY() - dist >= 170) {
+            picture.translate(0, -dist);
+        } else {
+            moveDown(dist);
+        }
+    }
+     */
 
     // keyboard events for the cursor
 
@@ -72,14 +103,13 @@ public class Cursor extends Square implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP) {
-            cursor.move(CursorDirection.UP);
-            System.out.println("Tecla Up");
+            System.out.println("Up");
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN) {
-            System.out.println("Tecla Down");
+            System.out.println("Down");
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
-            System.out.println("Tecla Left");
+            System.out.println("Left");
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
-            System.out.println("Tecla Right");
+            System.out.println("Right");
         }
     }
 

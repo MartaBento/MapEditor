@@ -2,7 +2,7 @@ package org.academiadecodigo.mapeditor.grid;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class Square extends Rectangle {
+public class Cell extends Rectangle {
 
     //properties
     private int x;
@@ -10,7 +10,7 @@ public class Square extends Rectangle {
     private boolean filled;
 
     //constructor
-    public Square(int x, int y) {
+    public Cell(int x, int y) {
         super(x, y, Grid.CELLSIZE, Grid.CELLSIZE);
     }
 
