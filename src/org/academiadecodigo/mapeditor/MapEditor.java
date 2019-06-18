@@ -5,11 +5,6 @@ import org.academiadecodigo.mapeditor.grid.Cursor;
 import org.academiadecodigo.mapeditor.grid.CursorDirection;
 import org.academiadecodigo.mapeditor.grid.Grid;
 
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
 import java.io.Closeable;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,8 +17,7 @@ public class MapEditor {
     private Cursor cursor;
     private boolean paitingCell;
     public LinkedList<Cell> cellGrid;
-    private Keyboard keyboard;
-
+    private MapKeyboard mapKeyboard;
 
     public void init() {
         grid = new Grid();
@@ -40,7 +34,7 @@ public class MapEditor {
         }
     }
 
-    public void unfillCell() {
+    public void unFillCell() {
         for (Cell rectangle : cellGrid) {
             rectangle.draw();
         }
@@ -85,6 +79,7 @@ public class MapEditor {
     public void setPaitingCell(boolean paitingCell) {
         this.paitingCell = paitingCell;
     }
+
     public void save () {
         FileWriter fileWriter = null;
 
@@ -112,91 +107,6 @@ public class MapEditor {
             stream.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public class MapEditorKeyboard implements KeyboardHandler {
-
-        private MapEditor mapEditor;
-
-        public MapEditorKeyboard(MapEditor mapEditor) {
-            this.mapEditor = mapEditor;
-        }
-
-        public void init() {
-            setupKeyboardListeners();
-            mapEditor.init();
-        }
-
-        private void setupKeyboardListeners() {
-            Keyboard keyboard = new Keyboard(this);
-
-            KeyboardEvent eventUp = new KeyboardEvent();
-            eventUp.setKey(KeyboardEvent.KEY_UP);
-            eventUp.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            keyboard.addEventListener(eventUp);
-
-            KeyboardEvent eventDown = new KeyboardEvent();
-            eventDown.setKey(KeyboardEvent.KEY_DOWN);
-            eventDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            keyboard.addEventListener(eventDown);
-
-
-            KeyboardEvent eventLeft = new KeyboardEvent();
-            eventLeft.setKey(KeyboardEvent.KEY_LEFT);
-            eventLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            keyboard.addEventListener(eventLeft);
-
-
-            KeyboardEvent eventRight = new KeyboardEvent();
-            eventRight.setKey(KeyboardEvent.KEY_RIGHT);
-            eventRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            keyboard.addEventListener(eventRight);
-
-        }
-
-
-        @Override
-        public void keyPressed(KeyboardEvent keyboardEvent) {
-
-            switch (keyboardEvent.getKey()) {
-
-                case KeyboardEvent.KEY_UP:
-                    mapEditor.paintCell(CursorDirection.UP);
-                    break;
-
-                case KeyboardEvent.KEY_DOWN:
-                    mapEditor.paintCell(CursorDirection.DOWN);
-                    break;
-
-                case KeyboardEvent.KEY_LEFT:
-                    mapEditor.paintCell(CursorDirection.LEFT);
-                    break;
-
-                case KeyboardEvent.KEY_RIGHT:
-                    mapEditor.paintCell(CursorDirection.RIGHT);
-                    break;
-
-                case KeyboardEvent.KEY_A:
-                    mapEditor.setPaitingCell(true);
-                    mapEditor.fillCell();
-                    break;
-
-                case KeyboardEvent.KEY_Z:
-                    mapEditor.unfillCell();
-                    break;
-
-                case KeyboardEvent.KEY_S:
-                    mapEditor.save();
-                    break;
-
-            }
-
-        }
-
-        @Override
-        public void keyReleased(KeyboardEvent keyboardEvent) {
-
         }
     }
 
