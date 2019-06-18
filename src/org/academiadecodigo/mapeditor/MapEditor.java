@@ -4,6 +4,10 @@ import org.academiadecodigo.mapeditor.grid.Cell;
 import org.academiadecodigo.mapeditor.grid.Cursor;
 import org.academiadecodigo.mapeditor.grid.CursorDirection;
 import org.academiadecodigo.mapeditor.grid.Grid;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 import java.io.Closeable;
 import java.io.FileWriter;
@@ -11,13 +15,13 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 
-public class MapEditor {
+public class MapEditor implements KeyboardHandler {
 
     private Grid grid;
     private Cursor cursor;
     private boolean paitingCell;
     public LinkedList<Cell> cellGrid;
-    private MapKeyboard mapKeyboard;
+    private Keyboard keyboard = new Keyboard(this);
 
     public void init() {
         grid = new Grid();
@@ -26,6 +30,8 @@ public class MapEditor {
         drawGrid();
         cursor = new Cursor(new Cell(Grid.PADDING, Grid.PADDING));
         cursor.init();
+        setupKeyboardListeners();
+
     }
 
     public void drawGrid () {
@@ -108,6 +114,81 @@ public class MapEditor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /* keyboard config */
+
+    private void setupKeyboardListeners() {
+
+        KeyboardEvent eventUp = new KeyboardEvent();
+        eventUp.setKey(KeyboardEvent.KEY_UP);
+        eventUp.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventUp);
+
+        KeyboardEvent eventDown = new KeyboardEvent();
+        eventDown.setKey(KeyboardEvent.KEY_DOWN);
+        eventDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventDown);
+
+
+        KeyboardEvent eventLeft = new KeyboardEvent();
+        eventLeft.setKey(KeyboardEvent.KEY_LEFT);
+        eventLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventLeft);
+
+
+        KeyboardEvent eventRight = new KeyboardEvent();
+        eventRight.setKey(KeyboardEvent.KEY_RIGHT);
+        eventRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventRight);
+
+    }
+
+
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+
+        switch (keyboardEvent.getKey()) {
+
+            case KeyboardEvent.KEY_UP:
+                paintCell(CursorDirection.UP);
+                System.out.println("Up");
+                break;
+
+            case KeyboardEvent.KEY_DOWN:
+                paintCell(CursorDirection.DOWN);
+                System.out.println("Down");
+                break;
+
+            case KeyboardEvent.KEY_LEFT:
+                paintCell(CursorDirection.LEFT);
+                System.out.println("Left");
+                break;
+
+            case KeyboardEvent.KEY_RIGHT:
+                paintCell(CursorDirection.RIGHT);
+                System.out.println("Right");
+                break;
+
+            case KeyboardEvent.KEY_A:
+                setPaitingCell(true);
+                fillCell();
+                break;
+
+            case KeyboardEvent.KEY_Z:
+                unFillCell();
+                break;
+
+            case KeyboardEvent.KEY_S:
+                save();
+                break;
+
+        }
+
+    }
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
     }
 
 }
