@@ -51,14 +51,14 @@ public class MapEditor implements KeyboardHandler {
         for (Cell rectangle : cellGrid) {
             if (rectangle.getY() == cursor.y() && rectangle.getX() == cursor.x() && !rectangle.isFilled()) {
                 rectangle.fill();
-                rectangle.setColor(Color.DARK_GRAY);
+                rectangle.setColor(Color.BLACK);
                 return;
             }
 
             if (rectangle.getY() == cursor.y() && rectangle.getX() == cursor.x() && rectangle.isFilled()) {
                 rectangle.draw();
                 rectangle.fill();
-                rectangle.setColor(Color.DARK_GRAY);
+                rectangle.setColor(Color.BLACK);
             }
         }
     }
@@ -146,6 +146,10 @@ public class MapEditor implements KeyboardHandler {
         eventRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(eventRight);
 
+        KeyboardEvent eventSpace = new KeyboardEvent();
+        eventSpace.setKey(KeyboardEvent.KEY_SPACE);
+        eventSpace.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventSpace);
     }
 
 
@@ -174,7 +178,7 @@ public class MapEditor implements KeyboardHandler {
                 System.out.println("Right");
                 break;
 
-            case KeyboardEvent.KEY_A:
+            case KeyboardEvent.KEY_SPACE:
                 setPaitingCell(true);
                 fillCell();
                 System.out.println("Painting cell");
