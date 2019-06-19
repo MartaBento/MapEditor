@@ -149,7 +149,6 @@ public class MapEditor implements KeyboardHandler {
         }
     }
 
-
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
@@ -191,8 +190,8 @@ public class MapEditor implements KeyboardHandler {
                 save();
                 break;
         }
-
     }
+
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
