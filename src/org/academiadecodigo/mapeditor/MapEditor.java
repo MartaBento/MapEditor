@@ -131,42 +131,22 @@ public class MapEditor implements KeyboardHandler {
 
     private void setupKeyboardListeners() {
 
-        KeyboardEvent eventUp = new KeyboardEvent();
-        eventUp.setKey(KeyboardEvent.KEY_UP);
-        eventUp.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventUp);
+        int[] keys = {
+                KeyboardEvent.KEY_UP,
+                KeyboardEvent.KEY_DOWN,
+                KeyboardEvent.KEY_LEFT,
+                KeyboardEvent.KEY_RIGHT,
+                KeyboardEvent.KEY_SPACE,
+                KeyboardEvent.KEY_Z,
+                KeyboardEvent.KEY_S,
+        };
 
-        KeyboardEvent eventDown = new KeyboardEvent();
-        eventDown.setKey(KeyboardEvent.KEY_DOWN);
-        eventDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventDown);
-
-
-        KeyboardEvent eventLeft = new KeyboardEvent();
-        eventLeft.setKey(KeyboardEvent.KEY_LEFT);
-        eventLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventLeft);
-
-
-        KeyboardEvent eventRight = new KeyboardEvent();
-        eventRight.setKey(KeyboardEvent.KEY_RIGHT);
-        eventRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventRight);
-
-        KeyboardEvent eventSpace = new KeyboardEvent();
-        eventSpace.setKey(KeyboardEvent.KEY_SPACE);
-        eventSpace.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventSpace);
-
-        KeyboardEvent eventZ = new KeyboardEvent();
-        eventZ.setKey(KeyboardEvent.KEY_Z);
-        eventZ.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventZ);
-
-        KeyboardEvent eventS = new KeyboardEvent();
-        eventS.setKey(KeyboardEvent.KEY_S);
-        eventS.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(eventS);
+        for (int key : keys) {
+            KeyboardEvent event = new KeyboardEvent();
+            event.setKey(key);
+            event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+            keyboard.addEventListener(event);
+        }
     }
 
 
