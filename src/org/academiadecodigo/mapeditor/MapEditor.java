@@ -100,7 +100,7 @@ public class MapEditor implements KeyboardHandler {
         FileWriter fileWriter = null;
 
         try {
-            fileWriter = new FileWriter("savedFile");
+            fileWriter = new FileWriter("resources/savefile.txt");
 
             for (Cell cell : grid.getCell()) {
 

@@ -1,11 +1,9 @@
-package org.academiadecodigo.mapeditor;/* Academia de Código
+package org.academiadecodigo.mapeditor;
+
+/* Academia de Código
 Map Editor - Exercise with Simple Gfx, emulates a paint program.
  */
 
-import org.academiadecodigo.mapeditor.grid.Cursor;
-import org.academiadecodigo.mapeditor.grid.CursorDirection;
-import org.academiadecodigo.mapeditor.grid.Grid;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class Main {
 
@@ -14,7 +12,7 @@ public class Main {
         mapEditor.init();
     }
 
-    // what's missing: saving file?, load file
+    // what's missing: saving file?, load file && clear the screen option
     /* add features on the future
     - play sound while paiting
     - paint style menu
