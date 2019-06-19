@@ -20,7 +20,7 @@ public class MapEditor implements KeyboardHandler {
 
     private Grid grid;
     private Cursor cursor;
-    private boolean paitingCell;
+    private boolean cellPainted;
     public LinkedList<Cell> cellGrid;
     private Keyboard keyboard = new Keyboard(this);
 
@@ -71,7 +71,7 @@ public class MapEditor implements KeyboardHandler {
 
     public void paintCell(CursorDirection direction) {
 
-        if (!paitingCell) {
+        if (!cellPainted) {
             fillCell();
         }
 
@@ -93,7 +93,7 @@ public class MapEditor implements KeyboardHandler {
     }
 
     public void setPaitingCell(boolean paitingCell) {
-        this.paitingCell = paitingCell;
+        this.cellPainted = paitingCell;
     }
 
     public void save () {

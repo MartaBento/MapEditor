@@ -14,7 +14,7 @@ public class Main {
         mapEditor.init();
     }
 
-    // what's missing: saving file, load file
+    // what's missing: saving file?, load file
     /* add features on the future
     - play sound while paiting
     - paint style menu

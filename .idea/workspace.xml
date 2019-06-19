@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list id="cd7b3ec9-e54e-4f02-83ba-7e1beae577c3" name="Default" comment="" />
     <list default="true" id="4fd08a97-2610-4184-bdac-908cc7ad4da7" name="Default Changelist" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MapEditor/org/academiadecodigo/mapeditor/grid/Grid.class" afterPath="$PROJECT_DIR$/out/production/MapEditor/org/academiadecodigo/mapeditor/grid/Grid.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/savedFile" afterPath="$PROJECT_DIR$/savedFile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/Main.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/MapEditor.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/MapEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Grid.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Grid.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,17 +31,25 @@
       <file leaf-file-name="MapEditor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/MapEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="94" column="32" lean-forward="true" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+            <state relative-caret-position="195">
+              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
               <folding>
                 <element signature="method#init#0;class#MapEditor#0" expanded="false" />
                 <element signature="method#drawGrid#0;class#MapEditor#0" expanded="false" />
                 <element signature="method#fillCell#0;class#MapEditor#0" expanded="false" />
                 <element signature="method#unFillCell#0;class#MapEditor#0" expanded="false" />
-                <element signature="method#paintCell#0;class#MapEditor#0" expanded="false" />
-                <element signature="method#save#0;class#MapEditor#0" expanded="false" />
-                <element signature="method#closeStream#0;class#MapEditor#0" expanded="false" />
+                <element signature="method#setupKeyboardListeners#0;class#MapEditor#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/FileManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -44,8 +57,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+            <state relative-caret-position="90">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -95,14 +108,21 @@
       <file leaf-file-name="Grid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Grid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="705">
+              <caret line="65" column="1" lean-forward="true" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -119,10 +139,11 @@
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/EditorKeyboard.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/MapKeyboard.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/Main.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Cursor.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Cell.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Grid.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/Main.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/FileManager.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/MapEditor.java" />
       </list>
     </option>
@@ -660,7 +681,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12939000" />
+    <option name="totallyTimeSpent" value="13369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="886" y="23" width="1034" height="1009" extended-state="0" />
@@ -702,7 +723,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -720,9 +741,7 @@
             <element signature="method#drawGrid#0;class#MapEditor#0" expanded="false" />
             <element signature="method#fillCell#0;class#MapEditor#0" expanded="false" />
             <element signature="method#unFillCell#0;class#MapEditor#0" expanded="false" />
-            <element signature="method#paintCell#0;class#MapEditor#0" expanded="false" />
-            <element signature="method#save#0;class#MapEditor#0" expanded="false" />
-            <element signature="method#closeStream#0;class#MapEditor#0" expanded="false" />
+            <element signature="method#setupKeyboardListeners#0;class#MapEditor#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -748,17 +767,17 @@
         <state relative-caret-position="13065">
           <caret line="903" column="10" lean-forward="false" selection-start-line="903" selection-start-column="10" selection-end-line="903" selection-end-column="10" />
           <folding>
-            <marker date="1560941412482" expanded="true" signature="47949:47966" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="47949:47984" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="47949:47997" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="47949:48012" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="48047:48430" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="48060:48415" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="48095:48401" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="48114:48386" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="48188:48366" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="48228:48332" ph="..." />
-            <marker date="1560941412482" expanded="true" signature="48249:48310" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49539:49556" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49539:49574" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49539:49587" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49539:49602" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49637:50020" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49650:50005" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49685:49991" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49704:49976" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49778:49956" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49818:49922" ph="..." />
+            <marker date="1560941861678" expanded="true" signature="49839:49900" ph="..." />
           </folding>
         </state>
       </provider>
@@ -767,14 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -788,20 +799,6 @@
             <element signature="e#2356#2357#0" expanded="true" />
             <element signature="e#2378#2379#0" expanded="true" />
             <element signature="e#2418#2419#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#375#376#0" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -822,19 +819,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/savedFile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/io/OutputStreamWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="192" column="16" lean-forward="false" selection-start-line="192" selection-start-column="16" selection-end-line="192" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Grid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="65" column="1" lean-forward="true" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -846,26 +857,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/grid/Grid.java">
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/FileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/savedFile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/mapeditor/MapEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="94" column="32" lean-forward="true" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+        <state relative-caret-position="195">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
           <folding>
             <element signature="method#init#0;class#MapEditor#0" expanded="false" />
             <element signature="method#drawGrid#0;class#MapEditor#0" expanded="false" />
             <element signature="method#fillCell#0;class#MapEditor#0" expanded="false" />
             <element signature="method#unFillCell#0;class#MapEditor#0" expanded="false" />
-            <element signature="method#paintCell#0;class#MapEditor#0" expanded="false" />
-            <element signature="method#save#0;class#MapEditor#0" expanded="false" />
-            <element signature="method#closeStream#0;class#MapEditor#0" expanded="false" />
+            <element signature="method#setupKeyboardListeners#0;class#MapEditor#0" expanded="false" />
           </folding>
         </state>
       </provider>
