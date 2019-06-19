@@ -65,7 +65,7 @@ public class MapEditor implements KeyboardHandler {
 
     public void paintCell(CursorDirection direction) {
 
-        if (paitingCell) {
+        if (!paitingCell) {
             fillCell();
         }
 
