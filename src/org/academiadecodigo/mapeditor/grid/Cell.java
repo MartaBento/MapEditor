@@ -1,5 +1,6 @@
 package org.academiadecodigo.mapeditor.grid;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Cell extends Rectangle {
@@ -19,6 +20,7 @@ public class Cell extends Rectangle {
     @Override
     public void draw() {
         super.draw();
+        setColor(Color.DARK_GRAY);
         this.filled = false;
     }
 

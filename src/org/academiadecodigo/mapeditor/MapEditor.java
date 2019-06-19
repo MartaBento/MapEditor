@@ -32,16 +32,9 @@ public class MapEditor implements KeyboardHandler {
         grid.init();
         drawGrid();
         setupKeyboardListeners();
-
     }
 
     public void drawGrid () {
-        for (Cell rectangle : cellGrid) {
-            rectangle.draw();
-        }
-    }
-
-    public void unFillCell() {
         for (Cell rectangle : cellGrid) {
             rectangle.draw();
         }
@@ -56,9 +49,22 @@ public class MapEditor implements KeyboardHandler {
             }
 
             if (rectangle.getY() == cursor.y() && rectangle.getX() == cursor.x() && rectangle.isFilled()) {
-                rectangle.draw();
                 rectangle.fill();
                 rectangle.setColor(Color.BLACK);
+            }
+        }
+    }
+
+    public void unFillCell() {
+        for (Cell rectangle : cellGrid) {
+            if (rectangle.getY() == cursor.y() && rectangle.getX() == cursor.x() && rectangle.isFilled()) {
+                rectangle.draw();
+                return;
+            }
+
+            if (rectangle.getY() == cursor.y() && rectangle.getX() == cursor.x() && rectangle.isFilled()) {
+                rectangle.draw();
+                return;
             }
         }
     }
@@ -94,12 +100,13 @@ public class MapEditor implements KeyboardHandler {
         FileWriter fileWriter = null;
 
         try {
-            fileWriter = new FileWriter("save/savedFile");
+            fileWriter = new FileWriter("savedFile");
 
             for (Cell cell : grid.getCell()) {
 
                 if (cell.isFilled()) {
                     fileWriter.write(1);
+                    System.out.println("File saved");
                     continue;
                 }
                 fileWriter.write(0);
@@ -150,6 +157,16 @@ public class MapEditor implements KeyboardHandler {
         eventSpace.setKey(KeyboardEvent.KEY_SPACE);
         eventSpace.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(eventSpace);
+
+        KeyboardEvent eventZ = new KeyboardEvent();
+        eventZ.setKey(KeyboardEvent.KEY_Z);
+        eventZ.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventZ);
+
+        KeyboardEvent eventS = new KeyboardEvent();
+        eventS.setKey(KeyboardEvent.KEY_S);
+        eventS.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(eventS);
     }
 
 
@@ -159,40 +176,40 @@ public class MapEditor implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
-                paintCell(CursorDirection.UP);
-                System.out.println("Up");
+                cursor.moveInDirection(CursorDirection.UP);
+                System.out.println("Key Up");
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-                paintCell(CursorDirection.DOWN);
-                System.out.println("Down");
+                cursor.moveInDirection(CursorDirection.DOWN);
+                System.out.println("Key down");
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                paintCell(CursorDirection.LEFT);
-                System.out.println("Left");
+                cursor.moveInDirection(CursorDirection.LEFT);
+                System.out.println("Key left");
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
-                paintCell(CursorDirection.RIGHT);
-                System.out.println("Right");
+                cursor.moveInDirection(CursorDirection.RIGHT);
+                System.out.println("Key right");
                 break;
 
             case KeyboardEvent.KEY_SPACE:
                 setPaitingCell(true);
                 fillCell();
-                System.out.println("Painting cell");
+                System.out.println("Key Space - Painting cell");
                 break;
 
             case KeyboardEvent.KEY_Z:
+                setPaitingCell(false);
                 unFillCell();
-                System.out.println("Unpainting cell");
+                System.out.println("Key Z - Unpainting cell");
                 break;
 
-            /*case KeyboardEvent.KEY_S:
+            case KeyboardEvent.KEY_S:
                 save();
                 break;
-            */
         }
 
     }

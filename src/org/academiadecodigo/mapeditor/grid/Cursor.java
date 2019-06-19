@@ -16,8 +16,8 @@ public class Cursor {
     }
 
     public void init() {
-        userCursor.setColor(Color.ORANGE);
         userCursor.fill();
+        userCursor.setColor(Color.CYAN);
     }
 
     // validates our grid bounds and if the cursor can move on that specific direction when we use the keyboard
