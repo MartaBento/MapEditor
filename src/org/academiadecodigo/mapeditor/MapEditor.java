@@ -9,6 +9,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import javax.sound.sampled.Clip;
 import java.io.*;
 import java.util.LinkedList;
 
@@ -20,6 +21,8 @@ public class MapEditor implements KeyboardHandler {
     private boolean cellPainted;
     public LinkedList<Cell> cellGrid;
     private Keyboard keyboard = new Keyboard(this);
+    private Sounds sounds;
+    private Clip currentClip;
 
     public void init() {
         grid = new Grid();
@@ -124,7 +127,7 @@ public class MapEditor implements KeyboardHandler {
 
         try {
 
-            fileWriter = new FileWriter("resources/savedfile.txt");
+            fileWriter = new FileWriter("savedfile.txt");
 
             for (Cell cell : grid.getCell()) {
                 if (cell.isFilled()) {
@@ -134,6 +137,7 @@ public class MapEditor implements KeyboardHandler {
                 }
 
                 fileWriter.write(0);
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -149,7 +153,7 @@ public class MapEditor implements KeyboardHandler {
 
         try {
 
-            fileReader = new FileReader("resources/savedfile.txt");
+            fileReader = new FileReader("savedfile.txt");
             LinkedList<Integer> list = new LinkedList<>();
 
             int i;
@@ -217,10 +221,14 @@ public class MapEditor implements KeyboardHandler {
 
             case KeyboardEvent.KEY_S:
                 save();
+                sounds = new Sounds();
+                currentClip = sounds.saveFile();
                 break;
 
             case KeyboardEvent.KEY_L:
                 load();
+                sounds = new Sounds();
+                currentClip = sounds.loadFile();
                 break;
         }
     }
