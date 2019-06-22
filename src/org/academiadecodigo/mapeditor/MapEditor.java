@@ -2,7 +2,6 @@ package org.academiadecodigo.mapeditor;
 
 import org.academiadecodigo.mapeditor.grid.Cell;
 import org.academiadecodigo.mapeditor.grid.Cursor;
-import org.academiadecodigo.mapeditor.grid.CursorDirection;
 import org.academiadecodigo.mapeditor.grid.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -10,9 +9,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-import java.io.Closeable;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedList;
 
 
@@ -69,25 +66,25 @@ public class MapEditor implements KeyboardHandler {
         }
     }
 
-    public void paintCell(CursorDirection direction) {
+    public void paintCell(Cursor.CursorDirection cursorDirection) {
 
         if (!cellPainted) {
             fillCell();
         }
 
-        switch (direction) {
+        switch (cursorDirection) {
 
             case UP:
-                cursor.moveInDirection(CursorDirection.UP);
+                cursor.moveInDirection(Cursor.CursorDirection.UP);
                 break;
             case DOWN:
-                cursor.moveInDirection(CursorDirection.DOWN);
+                cursor.moveInDirection(Cursor.CursorDirection.DOWN);
                 break;
             case LEFT:
-                cursor.moveInDirection(CursorDirection.LEFT);
+                cursor.moveInDirection(Cursor.CursorDirection.LEFT);
                 break;
             case RIGHT:
-                cursor.moveInDirection(CursorDirection.RIGHT);
+                cursor.moveInDirection(Cursor.CursorDirection.RIGHT);
                 break;
         }
     }
@@ -96,36 +93,7 @@ public class MapEditor implements KeyboardHandler {
         this.cellPainted = paitingCell;
     }
 
-    public void save () {
-        FileWriter fileWriter = null;
 
-        try {
-            fileWriter = new FileWriter("resources/savefile.txt");
-
-            for (Cell cell : grid.getCell()) {
-
-                if (cell.isFilled()) {
-                    fileWriter.write(1);
-                    System.out.println("File saved");
-                    continue;
-                }
-                fileWriter.write(0);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            closeStream(fileWriter);
-        }
-    }
-
-    private void closeStream(Closeable stream) {
-
-        try {
-            stream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /* keyboard config */
 
@@ -139,6 +107,7 @@ public class MapEditor implements KeyboardHandler {
                 KeyboardEvent.KEY_SPACE,
                 KeyboardEvent.KEY_Z,
                 KeyboardEvent.KEY_S,
+                KeyboardEvent.KEY_L,
         };
 
         for (int key : keys) {
@@ -149,51 +118,119 @@ public class MapEditor implements KeyboardHandler {
         }
     }
 
+    public void save() {
+
+        FileWriter fileWriter = null;
+
+        try {
+
+            fileWriter = new FileWriter("resources/savedfile.txt");
+
+            for (Cell cell : grid.getCell()) {
+                if (cell.isFilled()) {
+                    fileWriter.write(1);
+                    System.out.println("File saved.");
+                    continue;
+                }
+
+                fileWriter.write(0);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } finally {
+            closeStream(fileWriter);
+        }
+    }
+
+    public void load() {
+
+        FileReader fileReader = null;
+
+        try {
+
+            fileReader = new FileReader("resources/savedfile.txt");
+            LinkedList<Integer> list = new LinkedList<>();
+
+            int i;
+
+            while ((i = fileReader.read()) != -1) {
+                list.add(i);
+            }
+
+            for (int j = 0; j < grid.getCell().size(); j++) {
+                if (list.get(j) == 1) {
+                    grid.getCell().get(j).fill();
+                    continue;
+                }
+                grid.getCell().get(j).draw();
+                System.out.println("File loaded.");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } finally {
+            closeStream(fileReader);
+        }
+    }
+
+    private void closeStream(Closeable stream) {
+
+        try {
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
-                cursor.moveInDirection(CursorDirection.UP);
-                System.out.println("Key Up");
+                cursor.moveInDirection(Cursor.CursorDirection.UP);
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-                cursor.moveInDirection(CursorDirection.DOWN);
-                System.out.println("Key down");
+                cursor.moveInDirection(Cursor.CursorDirection.DOWN);
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                cursor.moveInDirection(CursorDirection.LEFT);
-                System.out.println("Key left");
+                cursor.moveInDirection(Cursor.CursorDirection.LEFT);
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
-                cursor.moveInDirection(CursorDirection.RIGHT);
-                System.out.println("Key right");
+                cursor.moveInDirection(Cursor.CursorDirection.RIGHT);
                 break;
 
             case KeyboardEvent.KEY_SPACE:
                 setPaitingCell(true);
                 fillCell();
-                System.out.println("Key Space - Painting cell");
                 break;
 
             case KeyboardEvent.KEY_Z:
                 setPaitingCell(false);
                 unFillCell();
-                System.out.println("Key Z - Unpainting cell");
                 break;
 
             case KeyboardEvent.KEY_S:
                 save();
+                break;
+
+            case KeyboardEvent.KEY_L:
+                load();
                 break;
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
+            setPaitingCell(false);
+        }
 
     }
 

@@ -40,27 +40,4 @@ public class Grid {
         return cellGrid;
     }
 
-    public static int getROWS() {
-        return ROWS;
-    }
-
-    public static int getCOLUMNS() {
-        return COLUMNS;
-    }
-
-    public static int getCELLSIZE() {
-        return CELLSIZE;
-    }
-
-    public static int getPADDING() {
-        return PADDING;
-    }
-
-    public LinkedList<Cell> getCellGrid() {
-        return cellGrid;
-    }
-
-    public void setCellGrid(LinkedList<Cell> cellGrid) {
-        this.cellGrid = cellGrid;
-    }
 }

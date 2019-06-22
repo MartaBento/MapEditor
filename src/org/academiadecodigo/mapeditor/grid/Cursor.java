@@ -9,6 +9,15 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Cursor {
 
+    public enum CursorDirection {
+
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT;
+
+    }
+
     private Cell userCursor;
 
     public Cursor (Cell userCursor) {
@@ -80,13 +89,6 @@ public class Cursor {
         return userCursor.getY();
     }
 
-    public Cell getCursor() {
-        return userCursor;
-    }
-
-    public void setCursor(Cell cursor) {
-        this.userCursor = cursor;
-    }
 }
 
 
